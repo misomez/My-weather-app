@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 50px auto;
+  max-width: 80%;
+  min-width: 920px;
+  font-family: "Poppins", sans-serif;
+}
+
+h6 {
+  display: block;
+  text-align: right;
+  margin: 10px auto 40px;
+}
+header {
+  text-align: center;
+}
+
+h1,
+#insert-city {
+  margin: 20px auto 30px;
+  font-size: 45px;
+  letter-spacing: 8px;
+  word-spacing: 10px;
+}
+
+h2 {
+  margin: 0 auto 20px;
+  text-transform: capitalize;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#current-degree {
+  font-size: 60px;
+}
+
+#current-location-button {
+  display: block;
+  margin: 50px auto 0;
+}
+
+#search-submit-button {
+  border-radius: 4px;
+  padding: 0 20px;
+}
+
+.unit:focus {
+  text-decoration: none;
+  color: black;
+}
+
+.hover {
+  position: relative;
+  bottom: 32px;
+  font-size: 15px;
+}
+
+.hover:hover {
+  opacity: 0.7;
+}
+.current-temp {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.emoji {
+  font-size: 80px;
+}
+
+.description {
+  text-align: left;
+  padding-left: 50px;
+  padding-top: 15px;
+  line-height: 2;
+  font-size: 18px;
+}
+
+.card {
+  text-align: center;
+}
+
+.card-day {
+  padding-top: 10px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.card-emoji {
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+.card-temp {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.input-group {
+  width: 70%;
+  margin: 40px auto;
+}
+
+.btn {
+  transition: all 50ms ease-in-out;
+}

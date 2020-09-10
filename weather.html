@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h6 id="current-time"></h6>
+      <header>
+        <h1>
+          <span id="currently-text">CURRENTLY IN</span>
+          <span id="insert-city">...</span>
+        </h1>
+        <h2 id="current-description"></h2>
+      </header>
+
+      <div class="row current-temp">
+        <div class="col-4 emoji my-auto"><p>🌤</p></div>
+        <div class="col-4 my-auto">
+          <p>
+            <span id="current-degree"> 0 </span>
+            <a href="#" class="unit"
+              ><span class="hover" id="hover-C">Cº</span></a
+            ><span class="hover"> | </span
+            ><a href="#" class="unit"
+              ><span class="hover" id="hover-F">Fº</span></a
+            >
+          </p>
+        </div>
+        <div class="col-4 my-auto description">
+          <p>
+            Humidity: <span id="current-humidity"></span> <br />
+            Winds: <span id="current-wind-speed"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row future-temp">
+        <div class="col">
+          <div class="card mb-3" style="max-width: 18rem">
+            <p class="card-day">Tomorrow</p>
+            <p class="card-emoji">🌧</p>
+            <p class="card-temp">13Cº</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3" style="max-width: 18rem">
+            <p class="card-day">Tuesday</p>
+            <p class="card-emoji">⛈</p>
+            <p class="card-temp">10Cº</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3" style="max-width: 18rem">
+            <p class="card-day">Wednesday</p>
+            <p class="card-emoji">🌧</p>
+            <p class="card-temp">15Cº</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3" style="max-width: 18rem">
+            <p class="card-day">Thursday</p>
+            <p class="card-emoji">☁️</p>
+            <p class="card-temp">16Cº</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-3" style="max-width: 18rem">
+            <p class="card-day">Friday</p>
+            <p class="card-emoji">☀️</p>
+            <p class="card-temp">20Cº</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="input-group mb-3 mx-auto">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Where are you?"
+          id="search-input-city"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" id="search-submit-button">
+            Search
+          </button>
+        </div>
+      </form>
+      <button class="btn btn-outline-primary" id="current-location-button">
+        Current Location
+      </button>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
