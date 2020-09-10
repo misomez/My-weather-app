@@ -29,8 +29,16 @@ function formatDate(date) {
   let currentDay = days[date.getDay()];
   let currentMonth = months[date.getMonth()];
   let currentDate = date.getDate();
+
   let currentHour = date.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+
   let currentMinute = date.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
 
   return `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}, ${currentHour}:${currentMinute}`;
 }
