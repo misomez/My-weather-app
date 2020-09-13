@@ -1,12 +1,12 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 body {
-  margin: 50px auto;
-  max-width: 80%;
-  min-width: 920px;
-  font-family: "Poppins", sans-serif;
+  margin: 100px auto;
+  max-width: 50%;
+  color: #64647d;
 }
 
 h6 {
@@ -20,15 +20,9 @@ header {
 
 h1,
 #insert-city {
-  margin: 20px auto 30px;
-  font-size: 45px;
-  letter-spacing: 8px;
-  word-spacing: 10px;
-}
-
-h2 {
-  margin: 0 auto 20px;
-  text-transform: capitalize;
+  margin: 20px auto 0px;
+  letter-spacing: 3px;
+  word-spacing: 5px;
 }
 
 p {
@@ -45,18 +39,31 @@ a:hover {
   cursor: pointer;
 }
 
+#current-description {
+  margin: 0 auto 20px;
+  text-transform: capitalize;
+}
+
 #current-degree {
-  font-size: 60px;
+  font-size: 50px;
+  padding-left: 10px;
 }
 
 #current-location-button {
   display: block;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 #search-submit-button {
   border-radius: 4px;
   padding: 0 20px;
+}
+
+.weather-container {
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: #ec874c4d;
+  padding: 0px 20px;
 }
 
 .unit:focus {
@@ -66,26 +73,22 @@ a:hover {
 
 .hover {
   position: relative;
-  bottom: 32px;
-  font-size: 15px;
+  top: -28px;
+  font-size: 14px;
 }
 
 .hover:hover {
   opacity: 0.7;
 }
 .current-temp {
-  margin: 20px auto;
+  margin: 0 auto;
   text-align: center;
-}
-
-.emoji {
-  font-size: 80px;
 }
 
 .description {
   text-align: left;
   padding-left: 50px;
-  padding-top: 15px;
+
   line-height: 2;
   font-size: 18px;
 }
@@ -98,22 +101,26 @@ a:hover {
   padding-top: 10px;
   margin-bottom: 0;
   font-weight: 500;
+  font-size: 15px;
 }
 
 .card-emoji {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 0;
 }
 
 .card-temp {
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 13px;
 }
 .input-group {
   width: 70%;
-  margin: 40px auto;
 }
 
 .btn {
   transition: all 50ms ease-in-out;
+}
+
+.credit {
+  margin: 10px 10px;
 }

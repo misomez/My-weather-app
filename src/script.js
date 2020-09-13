@@ -10,20 +10,7 @@ function formatDate(date) {
     "Saturday",
   ];
 
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   let currentYear = date.getFullYear();
   let currentDay = days[date.getDay()];
@@ -40,27 +27,26 @@ function formatDate(date) {
     currentMinute = `0${currentMinute}`;
   }
 
-  return `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}, ${currentHour}:${currentMinute}`;
+  return `Last updated: ${currentDay} ${currentDate}/${currentMonth}/${currentYear}, ${currentHour}:${currentMinute}`;
 }
 
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${formatDate(new Date())}`;
+document.querySelector("#current-time").innerHTML = `${formatDate(new Date())}`;
 
-//SEARCH FORM when searching a city, display city name on the page after the user submits the form.
+//SEARCH FORM
 
-function signUp(event) {
+function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input-city");
-  let currentlyText = document.querySelector("#currently-text");
-  let destination = document.querySelector("#insert-city");
 
   if (searchInput.value.length > 0) {
-    currentlyText.innerHTML = "CURRENTLY IN";
-    destination.innerHTML = searchInput.value.toUpperCase();
+    document.querySelector(
+      "#insert-city"
+    ).innerHTML = searchInput.value.toUpperCase();
   } else {
     alert("Please enter a city!");
     window.location.reload();
   }
+
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${key}&units=metric`;
   axios.get(url).then(showCity);
 }
@@ -130,7 +116,7 @@ function currentLocation(position) {
 }
 
 let form = document.querySelector("form");
-form.addEventListener("submit", signUp);
+form.addEventListener("submit", searchCity);
 
 let button = document.querySelector("#current-location-button");
 button.addEventListener("click", askPosition);
