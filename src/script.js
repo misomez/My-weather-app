@@ -104,7 +104,7 @@ function showCity(response) {
       response.data.main.temp
     );
     document.querySelector("#current-wind-speed").innerHTML =
-      Math.round(response.data.wind.speed * 3.6) + "km/h";
+      Math.round(response.data.wind.speed) + "km/h";
   }
 }
 
