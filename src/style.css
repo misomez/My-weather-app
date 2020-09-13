@@ -9,17 +9,11 @@ body {
   color: #64647d;
 }
 
-h6 {
-  display: block;
-  text-align: right;
-  margin: 10px auto 40px;
-}
 header {
   text-align: center;
 }
 
-h1,
-#insert-city {
+h1 {
   margin: 20px auto 0px;
   letter-spacing: 3px;
   word-spacing: 5px;
@@ -39,6 +33,13 @@ a:hover {
   cursor: pointer;
 }
 
+.weather-container {
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: #ec874c4d;
+  padding: 0px 20px;
+}
+
 #current-description {
   text-transform: capitalize;
   margin-bottom: 3px;
@@ -48,23 +49,6 @@ a:hover {
 #current-degree {
   font-size: 50px;
   padding-left: 10px;
-}
-
-#current-location-button {
-  display: block;
-  margin: 20px auto;
-}
-
-#search-submit-button {
-  border-radius: 4px;
-  padding: 0 20px;
-}
-
-.weather-container {
-  border: 1px solid grey;
-  border-radius: 10px;
-  background-color: #ec874c4d;
-  padding: 0px 20px;
 }
 
 .unit:focus {
@@ -121,7 +105,15 @@ a:hover {
 .btn {
   transition: all 50ms ease-in-out;
 }
+#current-location-button {
+  display: block;
+  margin: 20px auto;
+}
 
+#search-submit-button {
+  border-radius: 4px;
+  padding: 0 20px;
+}
 .credit {
   margin: 10px 10px;
 }
