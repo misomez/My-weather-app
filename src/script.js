@@ -66,6 +66,17 @@ function signUp(event) {
 }
 
 function showCity(response) {
+  document
+    .querySelector("#main-emoji")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+
+  document
+    .querySelector("#main-emoji")
+    .setAttribute("alt", `${response.data.weather[0].description}`);
+
   document.querySelector(
     "#insert-city"
   ).innerHTML = response.data.name.toUpperCase();
