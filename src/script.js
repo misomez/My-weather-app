@@ -58,6 +58,35 @@ function search(city) {
 
   url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(callForecastApi);
+
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  axios.get(url).then(changeUnits);
+}
+
+function changeUnits(response) {
+  let celciusUnit = document.querySelector("#hover-C");
+  celciusUnit.addEventListener("click", changeToC);
+
+  let farenUnit = document.querySelector("#hover-F");
+  farenUnit.addEventListener("click", changeToF);
+
+  function changeToF(event) {
+    event.preventDefault();
+    document.querySelector("#current-degree").innerHTML = Math.round(
+      (response.data.main.temp * 9) / 5 + 32
+    );
+    document.querySelector("#current-wind-speed").innerHTML =
+      Math.round(response.data.wind.speed / 1.609344) + " mph";
+  }
+
+  function changeToC(event) {
+    event.preventDefault();
+    document.querySelector("#current-degree").innerHTML = Math.round(
+      response.data.main.temp
+    );
+    document.querySelector("#current-wind-speed").innerHTML =
+      Math.round(response.data.wind.speed) + " km/h";
+  }
 }
 
 function callForecastApi(response) {
@@ -120,30 +149,6 @@ function showCity(response) {
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
-
-  let celciusUnit = document.querySelector("#hover-C");
-  celciusUnit.addEventListener("click", changeToC);
-
-  let farenUnit = document.querySelector("#hover-F");
-  farenUnit.addEventListener("click", changeToF);
-
-  function changeToF(event) {
-    event.preventDefault();
-    document.querySelector("#current-degree").innerHTML = Math.round(
-      (response.data.main.temp * 9) / 5 + 32
-    );
-    document.querySelector("#current-wind-speed").innerHTML =
-      Math.round(response.data.wind.speed / 1.609344) + " mph";
-  }
-
-  function changeToC(event) {
-    event.preventDefault();
-    document.querySelector("#current-degree").innerHTML = Math.round(
-      response.data.main.temp
-    );
-    document.querySelector("#current-wind-speed").innerHTML =
-      Math.round(response.data.wind.speed) + " km/h";
-  }
 }
 
 function askPosition(event) {
