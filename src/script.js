@@ -47,8 +47,21 @@ function searchCity(event) {
     window.location.reload();
   }
 
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${key}&units=metric`;
+  search(searchInput.value);
+}
+
+function search(city) {
+  let key = "e94c152ae85fb750981c6a15dadf3007";
+
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(showCity);
+
+  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+  axios.get(url).then(showForecast);
+}
+
+function showForecast(response) {
+  console.log(response.data);
 }
 
 function showCity(response) {
@@ -111,6 +124,7 @@ function askPosition(event) {
 }
 
 function currentLocation(position) {
+  let key = "e94c152ae85fb750981c6a15dadf3007";
   let currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${key}&units=metric`;
   axios.get(currentUrl).then(showCity);
 }
@@ -120,5 +134,3 @@ form.addEventListener("submit", searchCity);
 
 let button = document.querySelector("#current-location-button");
 button.addEventListener("click", askPosition);
-
-let key = "e94c152ae85fb750981c6a15dadf3007";
