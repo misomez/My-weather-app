@@ -56,12 +56,39 @@ function search(city) {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(showCity);
 
-  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
-  axios.get(url).then(showForecast);
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  axios.get(url).then(callForecastApi);
 }
 
-function showForecast(response) {
-  console.log(response.data);
+function callForecastApi(response) {
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let key = "e94c152ae85fb750981c6a15dadf3007";
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
+exclude=current,hourly&appid=${key}&units=metric`;
+  axios.get(forecastUrl).then(displayForecast);
+  console.log(forecastUrl);
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let i = 1; i < response.data.daily.length; i++) {
+    forecast = response.data.daily[i];
+    forecastElement.innerHTML += `<div class="col-2">
+    <h3> ${forecast.dt * 1000} </h3>
+    <img src="http://openweathermap.org/img/wn/${
+      forecast.weather[0].icon
+    }@2x.png" alt="Forecast emoji">
+    <div class="weather-forecast-temperature">
+    <strong> ${Math.round(forecast.temp.max)}° </strong>
+    ${Math.round(forecast.temp.min)}°
+    </div>
+    </div>
+    `;
+  }
 }
 
 function showCity(response) {
