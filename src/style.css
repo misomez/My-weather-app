@@ -5,7 +5,7 @@
 }
 body {
   margin: 80px auto;
-  max-width: 50%;
+  max-width: 60%;
   color: #64647d;
 }
 
@@ -87,7 +87,7 @@ a:hover {
 }
 #current-location-button {
   display: block;
-  margin: 20px auto;
+  margin: 30px auto;
 }
 
 #search-submit-button {
@@ -97,6 +97,16 @@ a:hover {
 .credit {
   margin: 10px 10px;
 }
+
+.future-temp{
+  display: flex;
+  margin: 0px auto 20px;
+  text-align: center;
+  
+}
+
+
+
 /*
 .weather-forecast {
   margin-top: 10px;

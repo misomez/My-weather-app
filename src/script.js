@@ -65,7 +65,7 @@ function callForecastApi(response) {
   let lon = response.data.coord.lon;
   let key = "e94c152ae85fb750981c6a15dadf3007";
   let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
-exclude=current,hourly&appid=${key}&units=metric`;
+exclude=hourly,minutely&appid=${key}&units=metric`;
   axios.get(forecastUrl).then(displayForecast);
   console.log(forecastUrl);
 }
@@ -75,14 +75,15 @@ function displayForecast(response) {
   forecastElement.innerHTML = null;
   let forecast = null;
 
-  for (let i = 1; i < response.data.daily.length; i++) {
+  for (let i = 1; i < 6; i++) {
     forecast = response.data.daily[i];
-    forecastElement.innerHTML += `<div class="col-2">
-    <h3> ${forecast.dt * 1000} </h3>
+    forecastElement.innerHTML += `
+    <div class="col">
+    
     <img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png" alt="Forecast emoji">
-    <div class="weather-forecast-temperature">
+    <div class="col weather-forecast-temperature">
     <strong> ${Math.round(forecast.temp.max)}° </strong>
     ${Math.round(forecast.temp.min)}°
     </div>
@@ -115,7 +116,7 @@ function showCity(response) {
     Math.round(response.data.main.humidity) + "%";
 
   document.querySelector("#current-wind-speed").innerHTML =
-    Math.round(response.data.wind.speed * 3.6) + "km/h";
+    Math.round(response.data.wind.speed * 3.6) + " km/h";
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -132,7 +133,7 @@ function showCity(response) {
       (response.data.main.temp * 9) / 5 + 32
     );
     document.querySelector("#current-wind-speed").innerHTML =
-      Math.round(response.data.wind.speed / 1.609344) + "mph";
+      Math.round(response.data.wind.speed / 1.609344) + " mph";
   }
 
   function changeToC(event) {
@@ -141,7 +142,7 @@ function showCity(response) {
       response.data.main.temp
     );
     document.querySelector("#current-wind-speed").innerHTML =
-      Math.round(response.data.wind.speed) + "km/h";
+      Math.round(response.data.wind.speed) + " km/h";
   }
 }
 
