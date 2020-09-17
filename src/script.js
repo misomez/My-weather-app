@@ -77,6 +77,9 @@ function changeUnits(response) {
     );
     document.querySelector("#current-wind-speed").innerHTML =
       Math.round(response.data.wind.speed / 1.609344) + " mph";
+
+    document.querySelector(".unit-change").innerHTML =
+      "H " + Math.round((response.data.main.temp * 9) / 5 + 32) + "º";
   }
 
   function changeToC(event) {
@@ -86,6 +89,9 @@ function changeUnits(response) {
     );
     document.querySelector("#current-wind-speed").innerHTML =
       Math.round(response.data.wind.speed) + " km/h";
+
+    document.querySelector(".unit-change").innerHTML =
+      "H " + Math.round(response.data.main.temp) + "º";
   }
 }
 
@@ -102,7 +108,10 @@ exclude=hourly,minutely&appid=${key}&units=metric`;
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
+  let forecastHeading = document.querySelector("#forecast-heading");
   let forecast = null;
+
+  forecastHeading.innerHTML += `<h3> 5 Day Forecast </h3>`;
 
   for (let i = 1; i < 6; i++) {
     forecast = response.data.daily[i];
@@ -113,8 +122,8 @@ function displayForecast(response) {
       forecast.weather[0].icon
     }@2x.png" alt="Forecast emoji">
     <div class="col weather-forecast-temperature">
-    <strong> ${Math.round(forecast.temp.max)}° </strong>
-    ${Math.round(forecast.temp.min)}°
+    <p class="unit-change"> H ${Math.round(forecast.temp.max)}° </p> 
+    <p class="unit-change">L ${Math.round(forecast.temp.min)}° </p>
     </div>
     </div>
     `;
