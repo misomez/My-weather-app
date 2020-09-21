@@ -108,22 +108,35 @@ exclude=hourly,minutely&appid=${key}&units=metric`;
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
-  let forecastHeading = document.querySelector("#forecast-heading");
-  let forecast = null;
 
-  forecastHeading.innerHTML += `<h3> 5 Day Forecast </h3>`;
+  let forecast = null;
 
   for (let i = 1; i < 6; i++) {
     forecast = response.data.daily[i];
+
+    let maxTemp = Math.round(forecast.temp.max);
+    let minTemp = Math.round(forecast.temp.min);
+
+    let weekday = new Array(7);
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+
     forecastElement.innerHTML += `
-    <div class="col">
-    
+    <div class="col forecast-day">
+    <h5>
+    ${weekday[new Date().getDay() + i]}
+    </h5>
     <img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png" alt="Forecast emoji">
     <div class="col weather-forecast-temperature">
-    <p class="unit-change"> H ${Math.round(forecast.temp.max)}° </p> 
-    <p class="unit-change">L ${Math.round(forecast.temp.min)}° </p>
+    <p class="unit-change"> H ${maxTemp}° </p> 
+    <p class="unit-change">L ${minTemp}° </p>
     </div>
     </div>
     `;
