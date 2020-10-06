@@ -77,9 +77,6 @@ function changeUnits(response) {
     );
     document.querySelector("#current-wind-speed").innerHTML =
       Math.round(response.data.wind.speed / 1.609344) + " mph";
-
-    document.querySelector(".unit-change").innerHTML =
-      "H " + Math.round((response.data.main.temp * 9) / 5 + 32) + "º";
   }
 
   function changeToC(event) {
@@ -89,9 +86,6 @@ function changeUnits(response) {
     );
     document.querySelector("#current-wind-speed").innerHTML =
       Math.round(response.data.wind.speed) + " km/h";
-
-    document.querySelector(".unit-change").innerHTML =
-      "H " + Math.round(response.data.main.temp) + "º";
   }
 }
 
@@ -118,13 +112,13 @@ function displayForecast(response) {
     let minTemp = Math.round(forecast.temp.min);
 
     let weekday = new Array(7);
-    weekday[0] = "Sun";
     weekday[1] = "Mon";
     weekday[2] = "Tue";
     weekday[3] = "Wed";
     weekday[4] = "Thu";
     weekday[5] = "Fri";
     weekday[6] = "Sat";
+    weekday[7] = "Sun";
 
     forecastElement.innerHTML += `
     <div class="col forecast-day">

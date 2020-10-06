@@ -6,7 +6,7 @@
 body {
   margin: 80px auto;
   max-width: 70%;
-  color: #64647d;
+  color: #2a3a75;
 }
 
 header {
@@ -14,7 +14,7 @@ header {
 }
 
 h1 {
-  margin: 30px auto;
+  margin: 30px auto 10px;
   letter-spacing: 5px;
   word-spacing: 5px;
 }
@@ -40,12 +40,24 @@ h3 {
 }
 
 .weather-container {
-  border: 1px solid grey;
+  border: 1px solid white;
   border-radius: 10px;
-  background-color: #ec874c4d;
+  background: #bdd4ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #ffffff,
+    #bdd4ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #ffffff,
+    #dbe8ff,
+    #bdd4ff,
+    #98bcff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   padding: 0px 20px;
 }
-
 #current-description {
   text-transform: capitalize;
   margin-bottom: 2px;
