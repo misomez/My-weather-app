@@ -96,7 +96,6 @@ function callForecastApi(response) {
   let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
 exclude=hourly,minutely&appid=${key}&units=metric`;
   axios.get(forecastUrl).then(displayForecast);
-  console.log(forecastUrl);
 }
 
 function displayForecast(response) {
@@ -112,13 +111,13 @@ function displayForecast(response) {
     let minTemp = Math.round(forecast.temp.min);
 
     let weekday = new Array(7);
+    weekday[0] = "Sun";
     weekday[1] = "Mon";
     weekday[2] = "Tue";
     weekday[3] = "Wed";
     weekday[4] = "Thu";
     weekday[5] = "Fri";
     weekday[6] = "Sat";
-    weekday[7] = "Sun";
 
     forecastElement.innerHTML += `
     <div class="col forecast-day">
@@ -165,10 +164,35 @@ function showCity(response) {
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
+
+  let celciusUnit = document.querySelector("#hover-C");
+  celciusUnit.addEventListener("click", changeToC);
+
+  let farenUnit = document.querySelector("#hover-F");
+  farenUnit.addEventListener("click", changeToF);
+
+  function changeToF(event) {
+    event.preventDefault();
+    document.querySelector("#current-degree").innerHTML = Math.round(
+      (response.data.main.temp * 9) / 5 + 32
+    );
+    document.querySelector("#current-wind-speed").innerHTML =
+      Math.round(response.data.wind.speed / 1.609344) + " mph";
+  }
+
+  function changeToC(event) {
+    event.preventDefault();
+    document.querySelector("#current-degree").innerHTML = Math.round(
+      response.data.main.temp
+    );
+    document.querySelector("#current-wind-speed").innerHTML =
+      Math.round(response.data.wind.speed) + " km/h";
+  }
 }
 
 function askPosition(event) {
   event.preventDefault();
+
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
 
