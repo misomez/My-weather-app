@@ -191,9 +191,9 @@ function showCity(response) {
 }
 
 function askPosition(event) {
-  event.preventDefault();
-
   navigator.geolocation.getCurrentPosition(currentLocation);
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
 }
 
 function currentLocation(position) {
